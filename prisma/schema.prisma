@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+  // engineType satırı varsa SİLİN veya yorum satırı yapın
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id        String  @id @default(uuid())
+  email     String  @unique
+  username  String  @unique
+  photo     String
+  hashedPassword String
+
+}
+
+model Hotel {
+  id            String   @id @default(uuid())
+  name          String
+  description   String
+  location      String
+  rating        Float    @default(0)
+  photos        String[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  address       String
+  pricePernight Float    @default(0)
+  rooms         Room[]
+}
+
+model Room {
+  id          String   @id @default(uuid())
+  hotelId     String
+  type        String
+  price       Float
+  amenities   String[]
+  photos      String[]
+  isAvailable Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  hotel       Hotel    @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+}
