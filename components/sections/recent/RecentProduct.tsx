@@ -51,14 +51,14 @@ const RecentProduct = () => {
                                 )}
                             </CardHeader>
                             <CardContent className='p-4 '>
-                                <CardTitle className='text-xl h-[120]'>{pkg.title}</CardTitle>
+                                <CardTitle className='text-xl h-[40]'>{pkg.title}</CardTitle>
                                 <CardDescription className='flex items-center text-sm text-gray-500 '>
                                     <MapPin className='w--4 h-4 mr-1'/>{pkg.location}
                                 </CardDescription>
-                                <CardDescription className='flex items-center text-sm text-gray-500 mt-2'>
+                                <CardDescription className='flex items-center text-sm text-gray-500 mt-1'>
                                     <Clock className='w--4 h-4 mr-1'/>{pkg.duration}
                                 </CardDescription>   
-                                <div className='flex justify-between items-center mt-4'>
+                                <div className='flex justify-between items-center mt-2'>
                                     <div>
                                         <span className='text-sky-600 font-bold text-xl'>{pkg.price}</span>
                                         {pkg.oldPrice && (
